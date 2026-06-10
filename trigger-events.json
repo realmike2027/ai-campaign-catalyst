@@ -1,0 +1,17 @@
+{
+  "activeTrigger": "CONVERSION_RATE_ALARM",
+  "events": {
+    "CONVERSION_RATE_ALARM": {
+      "urgency": "critical",
+      "focus": "retargeting"
+    },
+    "COMPETITOR_PRICE_SHOCK": {
+      "urgency": "high",
+      "focus": "value proof"
+    },
+    "HYPER_GROWTH_EXPANSION": {
+      "urgency": "medium",
+      "focus": "scalability"
+    }
+  }
+}
