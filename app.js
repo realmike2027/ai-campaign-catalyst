@@ -277,13 +277,15 @@ document.addEventListener('DOMContentLoaded', () => {
         themeToggleCheckbox.checked = htmlEl.classList.contains('dark');
         if (icon) icon.textContent = themeToggleCheckbox.checked ? '☀️' : '🌙';
 
-        themeToggleCheckbox.addEventListener('change', (e) => {
-            if (e.target.checked) {
-                htmlEl.classList.add('dark');
-                if (icon) { icon.textContent = '☀️'; icon.title = "Switch to Light Mode"; }
-            } else {
-                htmlEl.classList.remove('dark');
-                if (icon) { icon.textContent = '🌙'; icon.title = "Switch to Dark Mode"; }
+        themeToggleCheckbox.addEventListener('click', () => {
+            htmlEl.classList.toggle('dark');
+            const isDark = htmlEl.classList.contains('dark');
+            
+            themeToggleCheckbox.checked = isDark;
+            
+            if (icon) {
+                icon.textContent = isDark ? '☀️' : '🌙';
+                icon.title = isDark ? "Switch to Light Mode" : "Switch to Dark Mode";
             }
         });
     }
