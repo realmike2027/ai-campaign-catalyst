@@ -267,18 +267,23 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 3. Dark/Light Mode Toggler
-    const themeToggle = document.getElementById('themeToggle');
-    if (themeToggle) {
-        themeToggle.addEventListener('click', () => {
-            const htmlEl = document.documentElement;
-            const icon = document.getElementById('themeIcon');
-            if (htmlEl.classList.contains('dark')) {
-                htmlEl.classList.remove('dark');
-                if (icon) icon.textContent = '🌙';
-            } else {
+    // 3. Dark/Light Mode Toggler (Switch)
+    const themeToggleCheckbox = document.getElementById('themeToggleCheckbox');
+    if (themeToggleCheckbox) {
+        const htmlEl = document.documentElement;
+        const icon = document.getElementById('themeIcon');
+        
+        // Initial sync
+        themeToggleCheckbox.checked = htmlEl.classList.contains('dark');
+        if (icon) icon.textContent = themeToggleCheckbox.checked ? '☀️' : '🌙';
+
+        themeToggleCheckbox.addEventListener('change', (e) => {
+            if (e.target.checked) {
                 htmlEl.classList.add('dark');
-                if (icon) icon.textContent = '☀️';
+                if (icon) { icon.textContent = '☀️'; icon.title = "Switch to Light Mode"; }
+            } else {
+                htmlEl.classList.remove('dark');
+                if (icon) { icon.textContent = '🌙'; icon.title = "Switch to Dark Mode"; }
             }
         });
     }

@@ -42,9 +42,14 @@
 
         <div class="flex items-center gap-4">
           <!-- Dark Mode Toggle -->
-          <button id="themeToggle" class="p-2 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:text-cyan-400 transition" title="Theme umschalten">
-            <span id="themeIcon">☀️</span>
-          </button>
+          <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 px-4 py-2 rounded-xl flex items-center gap-3">
+            <span id="themeIcon" class="text-sm" title="Light Mode">🌙</span>
+            <label class="relative inline-flex items-center cursor-pointer">
+              <input type="checkbox" id="themeToggleCheckbox" class="sr-only peer" checked>
+              <div class="w-11 h-6 bg-slate-200 dark:bg-slate-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-cyan-500">
+              </div>
+            </label>
+          </div>
           
           <!-- Download Button -->
           <button id="downloadBtn" class="px-4 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 border border-slate-300 dark:border-slate-700 text-cyan-400 text-sm font-bold transition flex items-center gap-2">
