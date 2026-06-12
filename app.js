@@ -234,5 +234,54 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initiale ROI-Berechnung
     calculateROI();
 
+    // 1. ROI Reset Button
+    const resetBtn = document.getElementById('resetRoiBtn');
+    if (resetBtn) {
+        resetBtn.addEventListener('click', () => {
+            document.getElementById('roiCost').value = 5000;
+            document.getElementById('roiRevenue').value = 100000;
+            document.getElementById('roiBoost').value = 15;
+            calculateROI();
+        });
+    }
+
+    // 2. Export / Download Button
+    const downloadBtn = document.getElementById('downloadBtn');
+    if (downloadBtn) {
+        downloadBtn.addEventListener('click', () => {
+            const emails = document.getElementById('emailContent')?.textContent || '';
+            const prompts = document.getElementById('imagePrompts')?.textContent || '';
+            const video = document.getElementById('videoScript')?.textContent || '';
+            
+            const content = `=== E-MAIL KAMPAGNE ===\n${emails}\n\n=== BILD PROMPTS ===\n${prompts}\n\n=== VIDEOSKRIPT ===\n${video}`;
+            
+            const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `kampagnen-assets-${new Date().toISOString().slice(0,10)}.txt`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        });
+    }
+
+    // 3. Dark/Light Mode Toggler
+    const themeToggle = document.getElementById('themeToggle');
+    if (themeToggle) {
+        themeToggle.addEventListener('click', () => {
+            const htmlEl = document.documentElement;
+            const icon = document.getElementById('themeIcon');
+            if (htmlEl.classList.contains('dark')) {
+                htmlEl.classList.remove('dark');
+                if (icon) icon.textContent = '🌙';
+            } else {
+                htmlEl.classList.add('dark');
+                if (icon) icon.textContent = '☀️';
+            }
+        });
+    }
+
     loadTriggerEvents();
 });

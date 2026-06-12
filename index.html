@@ -10,23 +10,23 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="bg-slate-950 text-slate-100 min-h-screen font-sans antialiased">
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 min-h-screen font-sans antialiased">
 
   <div class="flex min-h-screen">
 
-    <aside class="w-64 bg-slate-900 border-r border-slate-800 p-6 flex flex-col justify-between">
+    <aside class="w-64 bg-white dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800 p-6 flex flex-col justify-between">
       <div>
         <div class="flex items-center gap-3 mb-8">
           <div class="w-8 h-8 rounded-lg bg-cyan-500 flex items-center justify-center font-bold text-slate-950">K</div>
           <span class="text-lg font-bold tracking-wider text-cyan-400">KAMPAGNEN LAB</span>
         </div>
         <nav class="space-y-2">
-          <a href="#" class="flex items-center gap-3 px-4 py-2.5 rounded-lg bg-slate-800 text-cyan-400 font-medium">
+          <a href="#" class="flex items-center gap-3 px-4 py-2.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-cyan-400 font-medium">
             <span>📊 Dashboard</span>
           </a>
         </nav>
       </div>
-      <div class="border-t border-slate-800 pt-4 text-xs text-slate-500">
+      <div class="border-t border-slate-200 dark:border-slate-800 pt-4 text-xs text-slate-500 dark:text-slate-500">
         <p>Client: Krause Maschinenbau</p>
         <p class="text-emerald-400 mt-1">● Live-System aktiv</p>
       </div>
@@ -34,30 +34,43 @@
 
     <main class="flex-1 p-8 overflow-y-auto">
 
-      <header class="flex justify-between items-center mb-8 border-b border-slate-800 pb-5">
+      <header class="flex justify-between items-center mb-8 border-b border-slate-200 dark:border-slate-800 pb-5">
         <div>
           <h1 class="text-3xl font-extrabold tracking-tight">Der autonome Kampagnen-Architekt</h1>
-          <p class="text-slate-400 mt-1">Strategische Trigger-Steuerung & Multimodale Synthese</p>
+          <p class="text-slate-600 dark:text-slate-400 mt-1">Strategische Trigger-Steuerung & Multimodale Synthese</p>
         </div>
 
-        <div class="bg-slate-900 border border-slate-800 px-4 py-2 rounded-xl flex items-center gap-3">
-          <span class="text-sm font-medium text-slate-300">Dozenten-Freigabe:</span>
-          <label class="relative inline-flex items-center cursor-pointer">
-            <input type="checkbox" id="approvalToggle" class="sr-only peer">
-            <div
-              class="w-11 h-6 bg-slate-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-cyan-500">
-            </div>
-          </label>
+        <div class="flex items-center gap-4">
+          <!-- Dark Mode Toggle -->
+          <button id="themeToggle" class="p-2 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:text-cyan-400 transition" title="Theme umschalten">
+            <span id="themeIcon">☀️</span>
+          </button>
+          
+          <!-- Download Button -->
+          <button id="downloadBtn" class="px-4 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 border border-slate-300 dark:border-slate-700 text-cyan-400 text-sm font-bold transition flex items-center gap-2">
+            <span>⬇️</span> Assets Exportieren
+          </button>
+
+          <!-- Dozenten-Freigabe -->
+          <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 px-4 py-2 rounded-xl flex items-center gap-3">
+            <span class="text-sm font-medium text-slate-700 dark:text-slate-300">Dozenten-Freigabe:</span>
+            <label class="relative inline-flex items-center cursor-pointer">
+              <input type="checkbox" id="approvalToggle" class="sr-only peer">
+              <div
+                class="w-11 h-6 bg-slate-200 dark:bg-slate-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-cyan-500">
+              </div>
+            </label>
+          </div>
         </div>
       </header>
 
-      <section class="bg-slate-900 border border-slate-800 rounded-2xl p-6 mb-8 shadow-xl">
+      <section class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 mb-8 shadow-xl">
         <h2 class="text-lg font-bold text-cyan-400 mb-4 flex items-center gap-2">
           <span>⚡</span> Zielgruppen-Ereignis (Trigger) simulieren
         </h2>
         <div class="max-w-xl">
           <select id="triggerSelect"
-            class="w-full bg-slate-950 border border-slate-700 text-slate-100 rounded-xl px-4 py-3 focus:outline-none focus:border-cyan-500 font-medium cursor-pointer">
+            class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-slate-100 rounded-xl px-4 py-3 focus:outline-none focus:border-cyan-500 font-medium cursor-pointer">
             <option value="crisis">🚨 Trigger 1: IT-Krise (Server-Crash bei Krause Maschinenbau - Produktion steht
               still)</option>
             <option value="money">💰 Trigger 2: Geldregen (Vorstand gibt 150.000 € Budget für Digitalisierung frei)
@@ -69,32 +82,33 @@
       </section>
 
       <!-- ROI Widget -->
-      <section class="bg-slate-900 border border-slate-800 rounded-2xl p-6 mb-8 shadow-xl">
+      <section class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 mb-8 shadow-xl">
         <h2 class="text-lg font-bold text-cyan-400 mb-4">📈 ROI-Kalkulator (Echtzeit)</h2>
         <div class="grid grid-cols-1 md:grid-cols-4 gap-4 items-end">
           <div>
-            <label class="block text-sm font-medium text-slate-400 mb-2">Kampagnenkosten (€)</label>
-            <input type="number" id="roiCost" value="5000" class="w-full bg-slate-950 border border-slate-700 text-slate-100 rounded-xl px-4 py-3 focus:outline-none focus:border-cyan-500 font-medium transition">
+            <label class="block text-sm font-medium text-slate-600 dark:text-slate-400 mb-2">Kampagnenkosten (€)</label>
+            <input type="number" id="roiCost" value="5000" class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-slate-100 rounded-xl px-4 py-3 focus:outline-none focus:border-cyan-500 font-medium transition">
           </div>
           <div>
-            <label class="block text-sm font-medium text-slate-400 mb-2">Aktueller Umsatz (€)</label>
-            <input type="number" id="roiRevenue" value="100000" class="w-full bg-slate-950 border border-slate-700 text-slate-100 rounded-xl px-4 py-3 focus:outline-none focus:border-cyan-500 font-medium transition">
+            <label class="block text-sm font-medium text-slate-600 dark:text-slate-400 mb-2">Aktueller Umsatz (€)</label>
+            <input type="number" id="roiRevenue" value="100000" class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-slate-100 rounded-xl px-4 py-3 focus:outline-none focus:border-cyan-500 font-medium transition">
           </div>
           <div>
-            <label class="block text-sm font-medium text-slate-400 mb-2">Conv.-Steigerung (%)</label>
-            <input type="number" id="roiBoost" value="15" class="w-full bg-slate-950 border border-slate-700 text-slate-100 rounded-xl px-4 py-3 focus:outline-none focus:border-cyan-500 font-medium transition">
+            <label class="block text-sm font-medium text-slate-600 dark:text-slate-400 mb-2">Conv.-Steigerung (%)</label>
+            <input type="number" id="roiBoost" value="15" class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-slate-100 rounded-xl px-4 py-3 focus:outline-none focus:border-cyan-500 font-medium transition">
           </div>
-          <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 text-center flex flex-col justify-center h-[50px] md:h-auto">
-            <span class="block text-xs text-slate-400 mb-1 uppercase tracking-wider">Erwarteter ROI</span>
+          <div class="bg-slate-50 dark:bg-slate-950 p-4 rounded-xl border border-slate-200 dark:border-slate-800 text-center flex flex-col justify-center h-[50px] md:h-auto relative">
+            <button id="resetRoiBtn" class="absolute top-2 right-2 text-xs text-slate-500 dark:text-slate-500 hover:text-cyan-400 transition" title="Standardwerte wiederherstellen">🔄</button>
+            <span class="block text-xs text-slate-600 dark:text-slate-400 mb-1 uppercase tracking-wider">Erwarteter ROI</span>
             <span id="roiResult" class="text-xl font-bold text-emerald-400">+ 0%</span>
           </div>
         </div>
       </section>
 
-      <section class="bg-slate-900 border border-slate-800 rounded-2xl p-6 mb-8 shadow-xl">
+      <section class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 mb-8 shadow-xl">
         <h2 class="text-lg font-bold text-cyan-400 mb-4">🗺️ Automatisierter 4-Wochen-Fahrplan</h2>
         <div
-          class="bg-slate-950 p-6 rounded-xl border border-slate-800 flex justify-center overflow-x-auto min-h-[250px]">
+          class="bg-slate-50 dark:bg-slate-950 p-6 rounded-xl border border-slate-200 dark:border-slate-800 flex justify-center overflow-x-auto min-h-[250px]">
           <div id="mermaidContainer" class="mermaid w-full text-center">
           </div>
         </div>
@@ -102,39 +116,39 @@
 
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
 
-        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between">
+        <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 flex flex-col justify-between">
           <div>
             <div class="flex justify-between items-center mb-4">
-              <h3 class="text-lg font-bold text-slate-200">📧 3-Teilige E-Mail-Drip-Kampagne</h3>
+              <h3 class="text-lg font-bold text-slate-800 dark:text-slate-200">📧 3-Teilige E-Mail-Drip-Kampagne</h3>
               <button onclick="copyText('emailContent')"
-                class="bg-slate-800 hover:bg-slate-700 text-xs px-3 py-1.5 rounded-lg text-cyan-400 border border-slate-700 transition">Kopieren</button>
+                class="bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:bg-slate-700 text-xs px-3 py-1.5 rounded-lg text-cyan-400 border border-slate-300 dark:border-slate-700 transition">Kopieren</button>
             </div>
             <div id="emailContent"
-              class="bg-slate-950 p-4 rounded-xl border border-slate-800 font-mono text-sm whitespace-pre-wrap max-h-[350px] overflow-y-auto text-slate-300">
+              class="bg-slate-50 dark:bg-slate-950 p-4 rounded-xl border border-slate-200 dark:border-slate-800 font-mono text-sm whitespace-pre-wrap max-h-[350px] overflow-y-auto text-slate-700 dark:text-slate-300">
             </div>
           </div>
         </div>
 
         <div class="space-y-8">
-          <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6">
+          <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6">
             <div class="flex justify-between items-center mb-4">
-              <h3 class="text-lg font-bold text-slate-200">🎨 Midjourney v6 Bild-Prompts</h3>
+              <h3 class="text-lg font-bold text-slate-800 dark:text-slate-200">🎨 Midjourney v6 Bild-Prompts</h3>
               <button onclick="copyText('imagePrompts')"
-                class="bg-slate-800 hover:bg-slate-700 text-xs px-3 py-1.5 rounded-lg text-cyan-400 border border-slate-700 transition">Kopieren</button>
+                class="bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:bg-slate-700 text-xs px-3 py-1.5 rounded-lg text-cyan-400 border border-slate-300 dark:border-slate-700 transition">Kopieren</button>
             </div>
             <div id="imagePrompts"
-              class="bg-slate-950 p-4 rounded-xl border border-slate-800 font-mono text-sm whitespace-pre-wrap text-slate-300">
+              class="bg-slate-50 dark:bg-slate-950 p-4 rounded-xl border border-slate-200 dark:border-slate-800 font-mono text-sm whitespace-pre-wrap text-slate-700 dark:text-slate-300">
             </div>
           </div>
 
-          <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6">
+          <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6">
             <div class="flex justify-between items-center mb-4">
-              <h3 class="text-lg font-bold text-slate-200">🎬 30-Sekunden LinkedIn-Videoskript</h3>
+              <h3 class="text-lg font-bold text-slate-800 dark:text-slate-200">🎬 30-Sekunden LinkedIn-Videoskript</h3>
               <button onclick="copyText('videoScript')"
-                class="bg-slate-800 hover:bg-slate-700 text-xs px-3 py-1.5 rounded-lg text-cyan-400 border border-slate-700 transition">Kopieren</button>
+                class="bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:bg-slate-700 text-xs px-3 py-1.5 rounded-lg text-cyan-400 border border-slate-300 dark:border-slate-700 transition">Kopieren</button>
             </div>
             <div id="videoScript"
-              class="bg-slate-950 p-4 rounded-xl border border-slate-800 font-mono text-sm whitespace-pre-wrap max-h-[200px] overflow-y-auto text-slate-300">
+              class="bg-slate-50 dark:bg-slate-950 p-4 rounded-xl border border-slate-200 dark:border-slate-800 font-mono text-sm whitespace-pre-wrap max-h-[200px] overflow-y-auto text-slate-700 dark:text-slate-300">
             </div>
           </div>
         </div>
