@@ -1,0 +1,11 @@
+{
+  "name": "ai-campaign-catalyst",
+  "version": "1.0.0",
+  "description": "AI Campaign Dashboard",
+  "scripts": {
+    "dev": "vite"
+  },
+  "devDependencies": {
+    "vite": "^5.0.0"
+  }
+}

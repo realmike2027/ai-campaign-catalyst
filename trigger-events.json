@@ -1,5 +1,5 @@
 {
-  "activeTrigger": "CONVERSION_RATE_ALARM",
+  "activeTrigger": "HYPER_GROWTH_EXPANSION",
   "events": {
     "CONVERSION_RATE_ALARM": {
       "urgency": "critical",
